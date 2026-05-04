@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Surprise to Janani </title>
+<title>Surprise to Janani 🎉</title>
 
 <style>
 body {
@@ -13,12 +13,11 @@ body {
   color: #333;
 }
 
-/* ✅ Full responsive center layout */
+/* Page layout */
 .page {
   display: none;
   min-height: 100vh;
   width: 100%;
-  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -31,7 +30,7 @@ body {
   display: flex;
 }
 
-/* ✅ Responsive text */
+/* Responsive text */
 h1 {
   font-size: clamp(20px, 5vw, 28px);
   margin-bottom: 10px;
@@ -43,7 +42,7 @@ p {
   max-width: 90%;
 }
 
-/* ✅ Buttons responsive */
+/* Buttons */
 button {
   padding: 12px 18px;
   margin: 8px;
@@ -53,14 +52,13 @@ button {
   color: white;
   font-size: clamp(14px, 4vw, 16px);
   cursor: pointer;
-  max-width: 90%;
 }
 
 button:hover {
   background: #e63950;
 }
 
-/* ✅ Image responsive */
+/* Image */
 img {
   width: 90%;
   max-width: 320px;
@@ -69,7 +67,7 @@ img {
   margin-top: 15px;
 }
 
-/* ✅ Smooth particles (no box look) */
+/* Confetti (smooth dots) */
 .confetti {
   position: fixed;
   width: 8px;
@@ -84,19 +82,6 @@ img {
   to {
     transform: translateY(100vh);
   }
-}
-
-/* ✅ Extra small phones */
-@media (max-width: 360px) {
-  h1 { font-size: 18px; }
-  p { font-size: 13px; }
-  button { font-size: 13px; padding: 10px 14px; }
-}
-
-/* ✅ Large phones */
-@media (min-width: 768px) {
-  h1 { font-size: 30px; }
-  p { font-size: 20px; }
 }
 </style>
 </head>
@@ -123,15 +108,15 @@ img {
 <div class="page" id="page3">
   <h1>A small message 💌</h1>
   <p>
-    From random talks to unforgettable moments... <br><br>
-   
+    From random talks to unforgettable moments...<br><br>
+    Life got a little better after you came into it ✨
   </p>
   <button onclick="nextPage(35)">Next ➡️</button>
 </div>
 
 <!-- Page 3.5 -->
 <div class="page" id="page35">
-  <h1>our chats 💬</h1>
+  <h1>Our chats 💬</h1>
   <img src="chat.png" alt="Chat Memory">
   <p>
     Idhu dhaan un original version 😂<br>
@@ -151,26 +136,44 @@ img {
   <button onclick="nextPage(5)">Final Surprise 🎁</button>
 </div>
 
-<!-- Page 5 -->
+<!-- Page 5 (Joke) -->
 <div class="page" id="page5">
-  <h1>Onnum Illai
- </h1>
+  <h1>Onnum Illai 😜</h1>
+  <p>போய் வேலையை பாருங்க 😆</p>
+</div>
+
+<!-- Page 6 (Real Wish) -->
+<div class="page" id="page6">
+  <h1>🎉 Happy Birthday Janani! 🎉</h1>
   <p>
-    போய் வேலையை பாருங்க 😜
+    Seri seri... joke dhan 😜<br><br>
+    Stay the same amazing person 💖<br>
+    Life is lucky to have you ❤️
   </p>
 </div>
 
 <script>
+let autoTriggered = false;
+
 function nextPage(pageNumber) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page' + pageNumber).classList.add('active');
 
-  if(pageNumber === 5){
+  if(pageNumber === 5 && !autoTriggered){
+    autoTriggered = true;
     startConfetti();
+
+    // Auto move after 3 seconds
+    setTimeout(() => {
+      nextPage(6);
+    }, 2000);
   }
 }
 
 function startConfetti() {
+  // Clear old confetti
+  document.querySelectorAll('.confetti').forEach(e => e.remove());
+
   for(let i=0; i<50; i++){
     let conf = document.createElement('div');
     conf.classList.add('confetti');
