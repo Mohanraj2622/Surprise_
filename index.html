@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Janani 🎉</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #333;
+}
+
+.page {
+  display: none;
+  padding: 40px 20px;
+}
+
+.active {
+  display: block;
+}
+
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #ff4d6d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e63950;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+img {
+  width: 90%;
+  max-width: 350px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Page 1 -->
+<div class="page active" id="page1">
+  <h1>Wait... are you Janani? 👀</h1>
+  <button onclick="nextPage(2)">YES 😎</button>
+  <button onclick="alert('Then why are you here? 😂')">NO 😜</button>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="page2">
+  <h1>Quick Quiz 😏</h1>
+  <p>Who is the most awesome person?</p>
+  <button onclick="nextPage(3)">Me</button>
+  <button onclick="nextPage(3)">Janani 😍</button>
+  <button onclick="nextPage(3)">Still Janani 😂</button>
+</div>
+
+<!-- Page 3 -->
+<div class="page" id="page3">
+  <h1>A small message 💌</h1>
+  <p>
+    From random talks to unforgettable moments... <br><br>
+    </p>
+  <button onclick="nextPage(35)">Next ➡️</button>
+</div>
+
+<!-- Page 3.5 (Chat Screenshot) -->
+<div class="page" id="page35">
+  <h1>One of my favorite chats 💬</h1>
+
+  <img src="chat.png" alt="Chat Memory">
+
+  <p>
+    Idhu dhaan un original version 😂<br>
+    These random talks… always special 😄
+  </p>
+
+  <button onclick="nextPage(4)">Next ➡️</button>
+</div>
+
+<!-- Page 4 -->
+<div class="page" id="page4">
+  <h1>Truth about you 😈</h1>
+  <p>
+    You are lazy sometimes... 😴<br>
+    You overreact a bit... 😜<br>
+    But still... 10/10 human ❤️
+  </p>
+  <button onclick="nextPage(5)">Final Surprise 🎁</button>
+</div>
+
+<!-- Page 5 -->
+<div class="page" id="page5">
+  <h1>🎉 Happy Birthday Janani! 🎉</h1>
+  <p>
+    Stay the same crazy, kind, and amazing person you are 💖<br><br>
+    Life is lucky to have you ❤️
+  </p>
+</div>
+
+<script>
+function nextPage(pageNumber) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + pageNumber).classList.add('active');
+
+  if(pageNumber === 5){
+    startConfetti();
+  }
+}
+
+function startConfetti() {
+  for(let i=0; i<60; i++){
+    let conf = document.createElement('div');
+    conf.classList.add('confetti');
+    conf.style.left = Math.random() * 100 + 'vw';
+    conf.style.backgroundColor = getRandomColor();
+    conf.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    document.body.appendChild(conf);
+  }
+}
+
+function getRandomColor() {
+  const colors = ['#ff4d6d','#ffbe0b','#3a86ff','#8338ec','#06d6a0'];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+</script>
+
+</body>
+</html>
